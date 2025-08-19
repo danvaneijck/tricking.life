@@ -1,5 +1,4 @@
 // src/components/event/EventList.tsx
-import React from 'react';
 import type { DocumentData } from 'firebase/firestore';
 import EventCard from './EventCard';
 

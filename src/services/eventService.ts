@@ -2,6 +2,7 @@
 import {
     collection,
     addDoc,
+    getDoc,
     serverTimestamp,
     getDocs,
     query,
@@ -53,4 +54,9 @@ export const getApprovedEvents = () => {
         orderBy("date", "asc") // Show upcoming events first
     );
     return getDocs(q);
+};
+
+export const getEventById = (eventId: string) => {
+    const eventDocRef = doc(db, "events", eventId);
+    return getDoc(eventDocRef);
 };

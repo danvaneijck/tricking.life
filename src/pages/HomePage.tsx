@@ -1,5 +1,5 @@
 // src/pages/HomePage.tsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import type { DocumentData } from 'firebase/firestore';
 import { getApprovedEvents } from '../services/eventService';
 import EventList from '../components/event/EventList';

@@ -1,12 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { logout } from '../../services/authService';
+import logo from "../../assets/logo.png"
 
 const Navbar = () => {
-    const { currentUser } = useAuth();
+    const { currentUser, userProfile } = useAuth();
     const navigate = useNavigate();
-
-    console.log(currentUser)
 
     const handleLogout = async () => {
         try {
@@ -21,7 +20,8 @@ const Navbar = () => {
         <header className="bg-gray-800 text-white shadow-md">
             <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Site Title/Logo */}
-                <Link to="/" className="text-2xl font-bold text-sky-400 hover:text-sky-300">
+                <Link to="/" className="text-2xl flex items-center font-bold  hover:text-sky-300">
+                    <img src={logo} className='w-20 mr-4' />
                     Tricking Life
                 </Link>
 
@@ -35,7 +35,17 @@ const Navbar = () => {
 
                     {currentUser ? (
                         <>
-                            {/* Optional: Show user email */}
+                            {userProfile?.role === 'admin' && (
+                                <li>
+                                    <Link
+                                        to="/admin/dashboard"
+                                        className="font-bold text-yellow-400 hover:text-yellow-300 transition-colors duration-200"
+                                    >
+                                        Admin
+                                    </Link>
+                                </li>
+                            )}
+
                             <li className="text-gray-300 hidden sm:block">{currentUser.email}</li>
                             <li>
                                 <button

@@ -11,6 +11,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
 import AdminRoute from './components/auth/AdminRoute';
 import DashboardPage from './pages/admin/DashboardPage';
+import EventDetailPage from './pages/EventDetailsPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/signup" element={<SignUpPage />} />
 
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/event/:eventId" element={<EventDetailPage />} /> {/* <-- Add this dynamic route */}
 
             <Route
               path="/submit-event"
